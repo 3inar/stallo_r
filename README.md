@@ -38,7 +38,7 @@ The cost of overestimating is less severe: you
 risk ending up in a slower queue on stallo.
 
 I **estimate compute time** very naively. Let's say I need to do 5000 resamplings:
-I run two resamplings and time them (see [this link](http://stackoverflow.com/questions/6262203/measuring-function-execution-time-in-r] for instructions), and divide this by 2. This gives me a rough estimate, t, of how long one resampling takes.
+I run two resamplings and time them (see [this link](http://stackoverflow.com/questions/6262203/measuring-function-execution-time-in-r) for instructions), and divide this by 2. This gives me a rough estimate, t, of how long one resampling takes.
 If I'm doing 10 jobs of 500 resamplings, I know that this job should take 500*t.
 Then I add some more time just to be safe. Say multiply by 1.5 or something.
 
