@@ -40,7 +40,11 @@ risk ending up in a slower queue on stallo.
 I **estimate compute time** very naively. Let's say I need to do 5000 resamplings:
 I run two resamplings and time them (see [this link](http://stackoverflow.com/questions/6262203/measuring-function-execution-time-in-r) for instructions), and divide this by 2. This gives me a rough estimate, t, of how long one resampling takes.
 If I'm doing 10 jobs of 500 resamplings, I know that this job should take 500*t.
-Then I add some more time just to be safe. Say multiply by 1.5 or something.
+Then I add some more time just to be safe. Say multiply by 1.5 or something. Note that **if you have a job that you expect to run for longer than 48h** you have to use the single node partition of the cluster and not the normal one. Do this by adding the following line to your job script:
+```
+#SBATCH --partition singlenode
+```
+This will allow your job to run for up to 28 days.
 
 I **estimate memory used** at the same time. R has a function `gc()` that gives 
 you some info about memory use. After having estimated time above, i simply run
